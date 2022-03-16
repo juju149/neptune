@@ -1,0 +1,174 @@
+
+.headerImg{
+    position: absolute;
+    height: 80%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+header{
+    background-color: transparent;
+    box-shadow: none;   
+}
+
+.headerInfo{
+    padding: 150px 0 0 15vw;
+}
+
+.hotelName{
+    color: var(--primary-color);
+}
+
+.sloganHeader{
+    font-size: 62px;
+    margin: 0;
+    padding: 0;
+}
+
+.findroom{
+    position: absolute;
+    top: 80vh;
+    transform: translateY(-50%);
+    left: 15%;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(30px);
+    padding: 25px 40px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.option{
+    margin-right: 40px;
+}
+
+.optionlLabel{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.findroombutton{
+    font-size: 16px;
+}
+
+.videoBanner{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 22px;
+    grid-row-gap: 22px;
+    padding: 40px;
+}
+
+.videoImage{
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.videoInfo{
+    width: 100%;
+}
+
+.sloganVideo{
+    font-size: 34px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.roomsList {
+    max-width: 800px;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 22px;
+    grid-row-gap: 22px;
+    padding: 40px;
+    margin-top: 200px;
+}
+
+.room{
+    width: 100%;
+}
+
+.roomImage{
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.singleroominfo{
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    transform: translateY(-100%);
+    padding: 15px;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.titleRoom{
+    font-weight: bold;
+    padding-right: 10px;
+    margin-bottom: -200px;
+}
+
+.roomPrice{
+    font-size: 12px;
+}
+
+.roombutton{
+    margin-top: 10px;
+}
+
+.contactBanner{
+    text-align: center;
+    margin: 120px 0;
+}
+
+.emailInput{
+    width: 40vw;
+}
+
+.roomText{
+    font-weight: 400;
+    font-size: 18px;
+    color: #111111;
+}
+
+.footer{
+    height: 400px;
+    background-color: #f6f6f6;
+}
+
+@media screen and (max-width: 600px){
+    .roomsList{
+        margin-top: 400px;
+    }
+    .emailInput{
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 440px){
+    .sloganHeader{
+        font-size: 37px;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .findroom{
+        transform: translate(-50%, -50%);
+        flex-direction: column;
+        left: 50%;
+    }
+}
+

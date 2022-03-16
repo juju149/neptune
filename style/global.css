@@ -1,0 +1,80 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined';
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons+Round';
+/* Get icons at https://fonts.google.com/icons */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import './theme/color.css';
+@import './theme/typo.css';
+@import './theme/variable.css';
+@import './navbar.css';
+@import './sidebar.css';
+
+
+
+body{
+    font-family: 'Poppins';
+    color: var(--font-color);
+    padding: 0;
+    margin: 0;
+}
+
+button{
+    background: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    cursor: pointer;
+}
+
+input{
+  padding: 10px 20px;
+  border: 0.5px solid #000000;
+  border-radius: 0;
+}
+
+.banner{
+  height: 80vh;
+}
+
+.navbar{
+  margin: auto;
+}
+
+.content{
+  transition: all 0.5s;
+}
+
+.grid{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-column-gap: 22px;
+  grid-row-gap: 22px;
+  padding: 40px;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: none;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--font-color);
+    border-radius: 10px;
+  }
