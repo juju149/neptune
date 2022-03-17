@@ -36,23 +36,28 @@ $rooms_list = getRooms($bdd);
             </div>
         </div>
 
-        <div class="findroom">
+        <form class="findroom" method="GET" action="./roomslist.php">
             <div class="option">
                 <div class="optionlLabel">De</div>
-                <input type="date" name="dateofbirth" id="dateofbirth">
+                <input type="date" name="date_start" id="date_start">
             </div>
             <div class="option">
                 <div class="optionlLabel">A</div>
-                <input type="date" name="dateofbirth" id="dateofbirth">
+                <input type="date" name="date_end" id="date_end">
             </div>
             <div class="option">
                 <div class="optionlLabel">Personne</div>
-                <span class="value">2 Adults 1 enfant</span>
+                <select name="capacity" class="value">
+                    <option value="">N'importe</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
             </div>
             <div>
-                <button class="findroombutton">Find room</button>
+                <input type="submit" class="findroombutton" value="Find room"></input>
             </div>
-        </div>
+        </form>
 
         <div style="margin-top: 300px;" class="banner videoBanner">
             <div class="video">

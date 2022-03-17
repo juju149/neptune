@@ -12,7 +12,7 @@ function search() {
   let li = document.getElementsByTagName("li");
   let filtre = document.getElementById("search").value.toUpperCase();
   console.log(li);
-  for (let i = 0; i < li.length; i++) {
+  for (let i = 1; i < li.length; i++) {
     let name = li[i].getElementsByTagName("input")[0].getAttribute("value").toUpperCase();
     if(name.indexOf(filtre) == -1)
     {

@@ -10,6 +10,27 @@
     z-index: -1;
 }
 
+.value{
+    padding: 10px 20px;
+    border: 0.5px solid #000000;
+    border-radius: 0;
+}
+
+.findroombutton{
+    background: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    cursor: pointer;
+}
+
+.findroombutton:hover{
+    background: var(--secondary-color);
+    transition: 0.5s;
+}
+
 header{
     background-color: transparent;
     box-shadow: none;   
@@ -40,6 +61,7 @@ header{
     padding: 25px 40px;
     border-radius: 10px;
     font-size: 16px;
+    align-items: flex-end;
 }
 
 .option{

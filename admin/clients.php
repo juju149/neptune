@@ -103,16 +103,15 @@ $list_client = getClient($bdd);
                             <span class="material-icons-round">event</span>
                             <span onclick="deleteConfirm(<?= $client['id'] ?>)" class="material-icons-round deleteoption">delete</span>
                         </div>
-                        
+                        <div class="itemicon">
+                            <span class="material-icons-round oneicons">edit</span>
+                        </div>
                         <div class="select">
                             <span class="selectoption">Ses reservations</span>
                             <br>
                             <span  class="selectoption deleteoption">Delete</span>
                         </div>
-                        <div class="itemicon">
-                            <span onclick="deleteConfirm(<?= $client['id'] ?>)"  class="material-icons-round oneicons deleteicon">delete</span>
-                            <span class="material-icons-round oneicons">edit</span>
-                        </div>
+
                     </li>
                 <?php endforeach; ?>
             </ul>

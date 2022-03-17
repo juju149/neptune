@@ -1,0 +1,201 @@
+.autoshow{
+    top: -100%;
+}
+
+.headerImg{
+    position: absolute;
+    height: 80%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.value{
+    padding: 10px 20px;
+    border: 0.5px solid #000000;
+    border-radius: 0;
+}
+
+.findroombutton{
+    background: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    cursor: pointer;
+}
+
+.findroombutton:hover{
+    background: var(--secondary-color);
+    transition: 0.5s;
+}
+
+header{
+    background-color: transparent;
+    box-shadow: none;   
+}
+
+.headerInfo{
+    padding: 150px 0 0 15vw;
+}
+
+.hotelName{
+    color: var(--primary-color);
+}
+
+.sloganHeader{
+    font-size: 62px;
+    margin: 0;
+    padding: 0;
+}
+
+.findroom{
+    position: fixed;
+    top: 100px;
+    
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    background-color: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(30px);
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    align-items: flex-end;
+    z-index: 999;
+    box-shadow: 0px 5px 40px 0px rgba(0,0,0,0.35);
+}
+
+.option{
+    margin-right: 40px;
+}
+
+.optionlLabel{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.findroombutton{
+    font-size: 16px;
+}
+
+.videoBanner{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 22px;
+    grid-row-gap: 22px;
+    padding: 40px;
+}
+
+.videoImage{
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.videoInfo{
+    width: 100%;
+}
+
+.sloganVideo{
+    font-size: 34px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.roomsList {
+    max-width: 900px;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 22px;
+    grid-row-gap: 22px;
+    padding: 40px;
+    margin-top: 200px;
+}
+
+.room{
+    width: 100%;
+}
+
+.roomImage{
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.singleroominfo{
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    transform: translateY(-106%);
+    padding: 15px;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.titleRoom{
+    font-weight: bold;
+    padding-right: 10px;
+    margin-bottom: -200px;
+}
+
+.roomPrice{
+    font-size: 12px;
+}
+
+.roombutton{
+    margin-top: 10px;
+}
+
+.contactBanner{
+    text-align: center;
+    margin: 120px 0;
+}
+
+.emailInput{
+    width: 40vw;
+}
+
+.roomText{
+    font-weight: 400;
+    font-size: 18px;
+    color: #111111;
+}
+
+.footer{
+    height: 400px;
+    background-color: #f6f6f6;
+}
+
+@media screen and (max-width: 600px){
+    .emailInput{
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 440px){
+    .sloganHeader{
+        font-size: 37px;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .findroom{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .findroombutton{
+        margin-top: 15px;
+    }
+}
+

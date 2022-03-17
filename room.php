@@ -3,6 +3,7 @@ require "./functions.php";
 $tarifs_list = getTarifs($bdd);
 $rooms_list = getRooms($bdd);
 $room_id = htmlspecialchars($_GET["id"]);
+$room;
 foreach ($rooms_list as $key => $value) {
     if ($value['id'] == $room_id) {
         $room = $value;
