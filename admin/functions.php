@@ -5,41 +5,60 @@ $dns = "mysql:host=localhost;dbname=neptune";
 
 $bdd = new PDO($dns, $user, $password);
 
-function verifParam($param)
+function verifParam($get_list = [], $post_list = [])
 {
-    $required = array("civilite", "email", "nom", "prenom", "adresse", "codePostal", "ville", "pays");
 
-    if (array_key_exists("action", $_GET)) {
-        if ($_GET["action"] != $param) {
-            return "";
-        }
-    }
-
-    foreach ($required as $field) {
+    foreach ($post_list as $field) {
         if (!array_key_exists($field, $_POST)) {
-            return "";
+            return false;
+        }
+        if (empty($_POST[$field])) {
+            return false;
         }
     }
 
-    foreach ($required as $field) {
-        if (empty($_POST[$field])) {
-            // return "Un champ de peut pas etre vide";
+    foreach ($get_list as $field) {
+        if (!array_key_exists($field, $_GET)) {
+            return false;
+        }
+        if (empty($_GET[$field])) {
+            return false;
         }
     }
+
+    return true;
+}
+
+function modifyPlaning($bdd)
+{
+    $verif = verifParam(array("client_id", "action", "chambre_id", "jour"), array("acompte", "paye"));
+    if (!$verif) {
+        return false;
+    }
+    if ($_GET["action"] != "modify") {
+        return false;
+    }
+    $client_id = $_GET["client_id"];
+    $chambre_id = $_GET['chambre_id'];
+    $jour = $_GET['jour'];
+    $acompte = $_POST['acompte'] == "2" ? "0" : "1";
+    $paye = $_POST['paye'] == "2" ? "0" : "1";
+    $bdd->query("UPDATE planning SET acompte = '$acompte', paye = '$paye' WHERE chambre_id = '$chambre_id' AND jour = '$jour' AND client_id = '$client_id' ");
+    header("Location: /client.php/?client_id=$client_id");
 }
 
 
 function modifyClient($bdd)
 {
 
-    if (!array_key_exists("id", $_GET)) {
-        return "";
+
+    $verif = verifParam(array("id", "action"), array("civilite", "email", "nom", "prenom", "adresse", "codePostal", "ville", "pays"));
+
+    if (!$verif) {
+        return false;
     }
-
-    $verif = verifParam("modify");
-
-    if (is_string($verif)) {
-        return $verif;
+    if ($_GET["action"] != "modify") {
+        return false;
     }
 
     $civilite = $_POST['civilite'];
@@ -57,9 +76,12 @@ function modifyClient($bdd)
 
 function addClient($bdd)
 {
-    $verif = verifParam("add");
-    if (is_string($verif)) {
-        return $verif;
+    $verif = verifParam(array("action"), array("civilite", "email", "nom", "prenom", "adresse", "codePostal", "ville", "pays"));
+    if (!$verif) {
+        return false;
+    }
+    if ($_GET["action"] != "add") {
+        return false;
     }
 
     $civilite = $_POST['civilite'];
@@ -92,14 +114,49 @@ function getRooms($bdd)
     return $sth->fetchALl(PDO::FETCH_ASSOC);
 }
 
+function getReservation($bdd)
+{
+    $verif = verifParam(["client_id"]);
+    if (!$verif) {
+        return false;
+    }
+
+    $client_id = $_GET["client_id"];
+    $sth = $bdd->query("SELECT * FROM planning WHERE client_id = $client_id");
+    return $sth->fetchALl(PDO::FETCH_ASSOC);
+
+    return false;
+}
+
 function deleteClient($bdd)
 {
-    if (array_key_exists("id", $_GET) && array_key_exists("action", $_GET)) {
-        if (!empty($_GET["id"]) && $_GET["action"] == "delete") {
-            $id = $_GET["id"];
-            $bdd->query("DELETE FROM planning WHERE client_id = $id");
-            $bdd->query("DELETE FROM clients WHERE id = $id");
-            header('Location: /');
-        }
+    $verif = verifParam(array("id", "action"));
+    if (!$verif) {
+        return false;
     }
+    if ($_GET["action"] != "delete") {
+        return false;
+    }
+
+    $id = $_GET["id"];
+    $bdd->query("DELETE FROM planning WHERE client_id = $id");
+    $bdd->query("DELETE FROM clients WHERE id = $id");
+    header('Location: /');
+}
+
+function deletePlanning($bdd)
+{
+    $verif = verifParam(array("client_id", "action", "chambre_id", "jour"));
+    if (!$verif) {
+        return false;
+    }
+    if ($_GET["action"] != "delete") {
+        return false;
+    }
+
+    $client_id = $_GET["client_id"];
+    $chambre_id = $_GET["chambre_id"];
+    $jour = $_GET["jour"];
+    $bdd->query("DELETE FROM planning WHERE client_id = $client_id AND chambre_id = $chambre_id AND jour = '$jour'");
+    header("Location: /client.php/?client_id=$client_id");
 }

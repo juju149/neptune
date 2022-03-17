@@ -2,6 +2,7 @@
 $user = "root";
 $password = "";
 $dns = "mysql:host=localhost;dbname=neptune";
+//mdp: Neptune1
 
 $bdd = new PDO($dns, $user, $password);
 

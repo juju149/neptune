@@ -22,8 +22,8 @@ $list_client = getClient($bdd);
 </head>
 
 <body>
-        <?php include "./components/sidebar.html"; ?>
-        <?php include "./components/navbar.html"; ?>
+    <?php include "./components/sidebar.html"; ?>
+    <?php include "./components/navbar.html"; ?>
     <div onclick="closesidebar()" class="content">
 
         <h1 class="title">Client panel</h1>
@@ -100,14 +100,14 @@ $list_client = getClient($bdd);
                             
                         </form>
                         <div class="moreicon">
-                            <span class="material-icons-round">event</span>
+                            <a href="./reservations.php?client_id=<?= $client['id'] ?>"><span class="material-icons-round">event</span></a>
                             <span onclick="deleteConfirm(<?= $client['id'] ?>)" class="material-icons-round deleteoption">delete</span>
                         </div>
                         <div class="itemicon">
                             <span class="material-icons-round oneicons">edit</span>
                         </div>
                         <div class="select">
-                            <span class="selectoption">Ses reservations</span>
+                        <a href="./reservations.php?client_id=<?= $client['id'] ?>"><span class="selectoption">Ses reservations</span></a>
                             <br>
                             <span  class="selectoption deleteoption">Delete</span>
                         </div>
