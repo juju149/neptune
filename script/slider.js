@@ -13,11 +13,6 @@ window.addEventListener('DOMContentLoaded', function(){
     }
 })
 
-
-
-
-
-
 const loopAutoNext = (time) => {
   setTimeout(() => {
     onNextClick()

@@ -1,3 +1,6 @@
+.autoshow{
+    top: -100%;
+}
 
 .headerImg{
     position: absolute;
@@ -82,7 +85,7 @@ header{
 }
 
 .roomsList {
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
     display: grid;
     justify-content: center;
@@ -109,7 +112,7 @@ header{
 .singleroominfo{
     background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
-    transform: translateY(-100%);
+    transform: translateY(-106%);
     padding: 15px;
     border-radius: 10px;
     position: absolute;

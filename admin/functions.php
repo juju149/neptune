@@ -86,6 +86,12 @@ function getClient($bdd)
     return $sth->fetchALl(PDO::FETCH_ASSOC);
 }
 
+function getRooms($bdd)
+{
+    $sth = $bdd->query("SELECT * FROM chambres");
+    return $sth->fetchALl(PDO::FETCH_ASSOC);
+}
+
 function deleteClient($bdd)
 {
     if (array_key_exists("id", $_GET) && array_key_exists("action", $_GET)) {

@@ -22,19 +22,17 @@
 //     });
 // })
 
-window.addEventListener('DOMContentLoaded', function(){
-    el_autoshow = document.querySelector('.autoshow');
-    navbar_height = document.querySelector('.navbar').offsetHeight;
-    el_autoshow.style.setProperty('top', '-255px')
-    window.addEventListener('scroll', function() {
-        if (window.scrollY >= 300) {
-            el_autoshow.style.top = '0px'
-        }
-        else{
-            el_autoshow.style.top = -navbar_height*2 + 'px'
-        }
-    });
-})
+el_autoshow = document.querySelector('.autoshow');
+navbar_height = document.querySelector('.navbar').offsetHeight;
+el_autoshow.style.setProperty('top', '-255px')
+window.addEventListener('scroll', function() {
+    if (window.scrollY >= 300) {
+        el_autoshow.style.top = '0px'
+    }
+    else{
+        el_autoshow.style.top = -navbar_height*2 + 'px'
+    }
+});
 
 
 

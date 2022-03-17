@@ -64,17 +64,23 @@ input{
 
 /* width */
 ::-webkit-scrollbar {
-    width: 5px;
-  }
+  width: 5px;
+}
   
-  /* Track */
-  ::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background: none;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: var(--font-color);
-    border-radius: 10px;
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--font-color);
+  border-radius: 10px;
+}
+
+::selection {
+  color: #fff;
+  background: var(--primary-color);
+  border-radius: 10px;
+}
