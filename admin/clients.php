@@ -100,14 +100,14 @@ $list_client = getClient($bdd);
                             
                         </form>
                         <div class="moreicon">
-                            <a href="./reservations.php?client_id=<?= $client['id'] ?>"><span class="material-icons-round">event</span></a>
+                            <a href="./reservations.php?client_id=<?= $client['id'] ?>"><span class="material-icons-round" style="color: var(--primary-color);">event</span></a>
                             <span onclick="deleteConfirm(<?= $client['id'] ?>)" class="material-icons-round deleteoption">delete</span>
                         </div>
                         <div class="itemicon">
                             <span class="material-icons-round oneicons">edit</span>
                         </div>
                         <div class="select">
-                        <a href="./reservations.php?client_id=<?= $client['id'] ?>"><span class="selectoption">Ses reservations</span></a>
+                            <a href="./reservations.php?client_id=<?= $client['id'] ?>"><span class="selectoption">Ses reservations</span></a>
                             <br>
                             <span  class="selectoption deleteoption">Delete</span>
                         </div>

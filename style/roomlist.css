@@ -65,6 +65,8 @@ header{
     align-items: flex-end;
     z-index: 999;
     box-shadow: 0px 5px 40px 0px rgba(0,0,0,0.35);
+    animation: widthAnim 0.5s;
+    overflow: hidden;
 }
 
 .option{
@@ -125,6 +127,13 @@ header{
 
 .room{
     width: 100%;
+}
+
+.room:hover{
+    transition: 0.2s;
+    transform: scale(1.05);
+    cursor: pointer;
+    z-index: 1;
 }
 
 .roomImage{
@@ -199,3 +208,7 @@ header{
     }
 }
 
+@keyframes widthAnim {
+    from{width: 0%;}
+    to{width: 720px;}
+}

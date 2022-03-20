@@ -48,6 +48,13 @@ header{
     font-size: 62px;
     margin: 0;
     padding: 0;
+    transform-origin: left top;
+}
+
+.sloganHeader:hover{
+    transition: 0.2s;
+    transform: rotate(2deg);
+    cursor: pointer;
 }
 
 .findroom{
@@ -122,6 +129,13 @@ header{
 
 .room{
     width: 100%;
+}
+
+.room:hover{
+    transition: 0.2s;
+    transform: scale(1.05);
+    cursor: pointer;
+    z-index: 1;
 }
 
 .roomImage{

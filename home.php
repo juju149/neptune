@@ -39,7 +39,7 @@ $rooms_list = getRooms($bdd);
         <form class="findroom" method="GET" action="./roomslist.php">
             <div class="option">
                 <div class="optionlLabel">De</div>
-                <input type="date" name="date_start" id="date_start">
+                <input type="date" min="" name="date_start" id="date_start">
             </div>
             <div class="option">
                 <div class="optionlLabel">A</div>
@@ -80,21 +80,25 @@ $rooms_list = getRooms($bdd);
                 <button>View all</button>
             </div>
             <?php foreach ($rooms_list as $room) : ?>
-                <div class="room">
-                    <img class="roomImage" src="https://picsum.photos/id/<?= $room["id"]+random_int(1,200) ?>/800" alt="">
-                    <div class="singleroominfo">
-                        <span class="titleRoom"><?= $room["id"] ?></span>
-                        <span class="roomPrice">
-                            <?php foreach ($tarifs_list as $tarif) : ?>
-                                <span> <?= $tarif["id"] == $room["tarif_id"] ? $tarif["prix"].'€ par nuit' : ""; ?></span>
-                            <?php endforeach; ?>  
-                        </span>
-                    
-                            <br>
-                        <a href="./room.php?id=<?= $room["id"] ?>"><button class="roombutton">Book now</button></a>
-                       
+                
+                    <div class="room">
+                        <a style="text-decoration: none;color: var(--font-color)" href="./room.php?id=<?= $room["id"] ?>">
+                            <img class="roomImage" src="https://picsum.photos/id/<?= $room["id"]+random_int(1,200) ?>/800" alt="">
+                            <div class="singleroominfo">
+                                <span class="titleRoom"><?= $room["id"] ?></span>
+                                <span class="roomPrice">
+                                    <?php foreach ($tarifs_list as $tarif) : ?>
+                                        <span> <?= $tarif["id"] == $room["tarif_id"] ? $tarif["prix"].'€ par nuit' : ""; ?></span>
+                                    <?php endforeach; ?>  
+                                </span>
+                            
+                                    <br>
+                                <a href="./room.php?id=<?= $room["id"] ?>"><button class="roombutton">Book now</button></a>
+                            
+                            </div>
+                        </a>
                     </div>
-                </div>
+                
             <?php endforeach; ?>
         </div>
 

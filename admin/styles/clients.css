@@ -17,6 +17,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    width: fit-content;
 }
 
 .clientpannel{
@@ -145,6 +146,9 @@ select{
     }
 }
 @media screen and (max-width: 610px) {
+    .clientpannel{
+        margin-top: 200px;
+    }
     .saveBtn{
         display: none;
     }
@@ -168,6 +172,9 @@ select{
     .categoryline{
         grid-template-columns: repeat(auto-fit, minmax(10px, 80px));
         justify-content: start;
+    }
+    .moreicon{
+        transform: translateY(0px)!important;
     }
 
 }

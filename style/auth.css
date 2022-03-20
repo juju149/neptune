@@ -1,0 +1,44 @@
+body{
+    overflow-x: hidden;
+}
+
+form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 40px 0px rgba(0,0,0,0.35);
+    display: grid;
+    gap: 10px 0px;
+    z-index: 999;
+    background-color: var(--background-color);
+}
+
+select{
+    padding: 10px 5px;
+    border: 0.5px solid #000000;
+    border-radius: 0;
+    cursor: pointer;
+    border: none;
+    background-color: #F5F5F5;
+    border-radius: 4px;
+}
+
+.buttonSubmit{
+    margin-top: 50px;
+}
+
+input{
+    border: none;
+    background-color: #F5F5F5;
+    border-radius: 4px;
+}
+
+.banner{
+    width: 100%;
+    top: 0;
+    height: fit-content;
+    z-index: -1;
+}

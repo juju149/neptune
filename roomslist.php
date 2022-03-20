@@ -64,20 +64,22 @@ $rooms = searchRoom($bdd, $date_start , $date_end, $capacity);
                 
                 <?php foreach ($rooms as $room) : ?>
                     <div class="room">
-                        <img class="roomImage" src="https://picsum.photos/id/<?= $room["id"]+random_int(1,200) ?>/800" alt="">
-                        <div class="singleroominfo">
-                            <span class="titleRoom"><?= $room["id"] ?></span>
-                            <span class="roomPrice">
-                                <?php foreach ($tarifs_list as $tarif) : ?>
-                                    <span> <?= $tarif["id"] == $room["tarif_id"] ? $tarif["prix"].'€ par nuit' : ""; ?></span>
-                                <?php endforeach; ?>  
-                            </span>
-                        
-                                <br>
-                            <a href="./room.php?id=<?= $room["id"] ?>"><button class="roombutton">Book now</button></a>
-                        
-                        </div>
-                        
+                        <a style="text-decoration: none;color: var(--font-color)" href="./room.php?id=<?= $room["id"] ?>">
+                            <img class="roomImage" src="https://picsum.photos/id/<?= $room["id"]+random_int(1,200) ?>/800" alt="">
+                            
+                            <div class="singleroominfo">
+                                <span class="titleRoom"><?= $room["id"] ?></span>
+                                <span class="roomPrice">
+                                    <?php foreach ($tarifs_list as $tarif) : ?>
+                                        <span> <?= $tarif["id"] == $room["tarif_id"] ? $tarif["prix"].'€ par nuit' : ""; ?></span>
+                                    <?php endforeach; ?>  
+                                </span>
+                            
+                                    <br>
+                                <a href="./room.php?id=<?= $room["id"] ?>"><button class="roombutton">Book now</button></a>
+                            
+                            </div>
+                        </a>
                     </div>
                 <?php endforeach; ?>
                 <?php }else{ ?>
