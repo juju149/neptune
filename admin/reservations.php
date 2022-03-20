@@ -1,6 +1,6 @@
 <?php
 require_once "./functions/functions.php";
-require_once "./functions/function_client.php";
+require_once "./class/Client.php";
 if (!empty($_GET["client_id"])) {
     $client = new Client($_GET["client_id"]);
     $reservation = $client->reservation();
@@ -36,48 +36,76 @@ if (!empty($_GET["client_id"])) {
 </head>
 
 <body>
-
     <?php include "./components/sidebar.html"; ?>
     <?php include "./components/navbar.html"; ?>
     <div onclick="closesidebar()" class="content">
-        <h1 class="title">Les réservations</h1>
+        <h1 style="text-align: center;">Les réservations</h1>
         <div class="clientpannel" style="max-width: 1000px;">
-            <?php if (empty($reservation) || !$reservation) : ?>
-                Il n y a pas de reservation
-            <?php else : ?>
-                <div class="categoryline">
-                    <span class="civilite">Chambre ID</span>
-                    <span class="nom">Jour</span>
-                    <span class="prenom">Acompte</span>
-                    <span class="email">Un rat ? (paye)</span>
-                    <span class="catbtn"></span>
-                </div>
-                <ul class="clientlist">
+            <div class="categoryline">
+                <span class="civilite">Chambre info</span>
+                <span class="nom">Jour</span>
+                <span class="prenom">Acompte</span>
+                <span class="email">Un rat ? (paye)</span>
+                <span class="catbtn"></span>
+                <span class="catbtn"></span>
+            </div>
+            <ul class="clientlist">
+                <li class="clientline">
+                    <form action="/reservation.php/?client_id=<?= $_GET["client_id"] ?>&action=add" method="post">
+                        <select name="chambre_id" id="">
+                            <?php foreach ($list_chambres as $chambre) : ?>
+                                <option value="<?= $chambre["id"] ?>">capacité: <?= $chambre["capacite"] ?> <br> exposition: <?= $chambre["exposition"] ?> || douche: <?= $chambre["douche"] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input type="date" name="jour">
+                        <select name="acompte">
+                            <option value="1">Oui</option>
+                            <option value="0">Non</option>
+                        </select>
+                        <select name="paye">
+                            <option value="1">Oui</option>
+                            <option value="0">Non</option>
+                        </select>
+                        <input class="addclientbtn" type="submit" value="Ajouter">
+                        <span class="catbtn"></span>
+                        <?= !empty($err) ? "$err" : "" ?>
+                    </form>
+
+                </li>
+                <?php if (!$reservation || empty($reservation)) : ?>
+                    Il n y a pas de reservation
+                <?php else : ?>
                     <?php foreach ($reservation as $r) : ?>
+                        <?php
+                        $chambre_id = $r["chambre_id"];
+                        $chambre = $bdd->query("SELECT * FROM chambres WHERE id = $chambre_id");
+                        $chambre = $chambre->fetchAll(PDO::FETCH_ASSOC);
+                        ?>
                         <li class="clientline">
-                            <form action="/client.php/?client_id=<?= $_GET["client_id"] ?>&action=modify&chambre_id=<?= $r["chambre_id"] ?>&jour=<?= $r["jour"] ?>" method="post">
-                                <div><?= $r["chambre_id"] ?></div>
+
+                            <form action="/reservation.php/?client_id=<?= $_GET["client_id"] ?>&action=modify&chambre_id=<?= $r["chambre_id"] ?>&jour=<?= $r["jour"] ?>" method="post">
+                                <div class="textInfo">Capacité : <?= htmlentities($chambre[0]["capacite"]) ?> Exposition : <?= htmlentities($chambre[0]["exposition"]) ?> Douche : <?= htmlentities($chambre[0]["douche"]) ?>
+                                </div>
                                 <div style="text-transform: lowercase;"><?= date("F j, Y", strtotime($r["jour"])) ?></div>
+                                
+                                
                                 <select name="acompte">
                                     <option value="1" <?= $r["acompte"] == "1" ? "selected" : "" ?>>Oui</option>
-                                    <option value="2" <?= $r["acompte"] == "0" ? "selected" : "" ?>>Non</option>
+                                    <option value="0" <?= $r["acompte"] == "0" ? "selected" : "" ?>>Non</option>
                                 </select>
                                 <select name="paye">
                                     <option value="1" <?= $r["paye"] == "1" ? "selected" : "" ?>>Oui</option>
-                                    <option value="2" <?= $r["paye"] == "0" ? "selected" : "" ?>>Non</option>
+                                    <option value="0" <?= $r["paye"] == "0" ? "selected" : "" ?>>Non</option>
                                 </select>
                                 <input class="saveBtn" type="submit" value="Modifier">
+                                <button class="deleteButton" onclick="deletePlanning(<?= $_GET['client_id'] ?>, <?= $r['chambre_id'] ?>, '<?= $r['jour'] ?>')" type="button">Supprimer</button>
                             </form>
-                            <div class="moreicon">
-                                <span class="material-icons-round deleteoption" onclick="deletePlanning(<?= $_GET['client_id'] ?>, <?= $r['chambre_id'] ?>, '<?= $r['jour'] ?>')">delete</span>
-                            </div>
-                            
                         </li>
                     <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
+            </ul>
         </div>
     </div>
+<?php endif; ?>
 </body>
 
 </html>

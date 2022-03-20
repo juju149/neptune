@@ -1,6 +1,6 @@
 <?php
 require_once "./functions/functions.php";
-require_once "./functions/function_chambre.php";
+require_once "./class/Chambre.php";
 $list_chambres = getChambres($bdd);
 $list_tarifs = getTarifs($bdd);
 if (!empty($_GET["chambre_id"]) && !empty($_GET["action"])) {

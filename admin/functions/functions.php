@@ -20,7 +20,6 @@ function verifParam($post_list = [], $get_list = [])
     return true;
 }
 
-
 function getPays($bdd)
 {
     $sth = $bdd->query("SELECT * FROM pays", PDO::FETCH_ASSOC);

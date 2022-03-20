@@ -1,6 +1,6 @@
 <?php
 require_once "./functions/functions.php";
-require_once "./functions/function_client.php";
+require_once "./class/Client.php";
 $list_pays = getPays($bdd);
 $list_client = getClients($bdd);
 
@@ -86,34 +86,26 @@ if (!empty($_GET["client_id"]) && !empty($_GET["action"])) {
                 </li>
                 <?php foreach ($list_client as $client) : ?>
                     <li class="clientline">
-                        <form method="post" action="?id=<?= $client["id"]; ?>">
-                            <select class="civilite" name="civilite">
-                                <option value="Mademoiselle" <?= "Mademoiselle" == $client["civilite"] ? "selected" : ""; ?>>Mlle</option>
-                                <option value="Madame" <?= "Madame" == $client["civilite"] ? "selected" : ""; ?>>Mme</option>
-                                <option value="Monsieur" <?= "Monsieur" == $client["civilite"] ? "selected" : ""; ?>>Mr</option>
-                            </select>
-                            <input class="nom" id="nom" type="text" name="nom" value="<?= $client["nom"] ?>">
-                            <input class="prenom" type="text" name="prenom" value="<?= $client["prenom"] ?>">
-                            <input class="email" type="text" name="email" value="<?= $client["email"] ?>">
-                            <input class="adresse" type="text" name="adresse" value="<?= $client["adresse"] ?>">
-                            <input class="codePostal" type="text" name="codePostal" value="<?= $client["codePostal"] ?>">
-                            <input class="ville" type="text" name="ville" value="<?= $client["ville"] ?>">
-                            <select class="pays" name="pays">
-                                <?php foreach ($list_pays as $pays) : ?>
-                                    <option value="<?= $pays["id"]; ?>" <?= $pays["id"] == $client["pays_id"] ? "selected" : ""; ?>> <?= $pays["nom"]; ?> </option>
-                                <?php endforeach; ?>
-                            </select>
-                            <input class="saveBtn" type="submit" value="Save">
-                            <?php
-                            if (array_key_exists("id", $_GET)) {
-                                if ($client["id"] == $_GET["id"]) {
-                                    echo $error;
-                                }
-                            }
-                            ?>
-                            
-                            
-                        </form>
+                    <form method="post" action="?client_id=<?= $client["id"]; ?>&action=modify">
+                        <select class="civilite" name="civilite">
+                            <option value="Mademoiselle" <?= "Mademoiselle" == $client["civilite"] ? "selected" : ""; ?>>Mademoiselle</option>
+                            <option value="Madame" <?= "Madame" == $client["civilite"] ? "selected" : ""; ?>>Madame</option>
+                            <option value="Monsieur" <?= "Monsieur" == $client["civilite"] ? "selected" : ""; ?>>Monsieur</option>
+                        </select>
+                        <input class="nom" type="text" name="nom" value="<?= $client["nom"] ?>" required="required">
+                        <input class="prenom" type="text" name="prenom" value="<?= $client["prenom"] ?>" required="required">
+                        <input class="email" type="text" name="email" value="<?= $client["email"] ?>" required="required">
+                        <input class="adresse" type="text" name="adresse" value="<?= $client["adresse"] ?>" required="required">
+                        <input class="codePostal" type="text" name="codePostal" value="<?= $client["codePostal"] ?>" required="required">
+                        <input class="ville" type="text" name="ville" value="<?= $client["ville"] ?>" required="required">
+                        <select class="pays" name="pays">
+                            <?php foreach ($list_pays as $pays) : ?>
+                                <option value="<?= $pays["id"]; ?>" <?= $pays["id"] == $client["pays_id"] ? "selected" : ""; ?>> <?= $pays["nom"]; ?> </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input class="saveBtn" type="submit" value="Modifier">
+                    </form>
+
                         <div class="moreicon">
                             <a href="./reservations.php?client_id=<?= $client['id'] ?>"><span class="material-icons-round" style="color: var(--primary-color);">event</span></a>
                             <span onclick="deleteConfirm(<?= $client['id'] ?>)" class="material-icons-round deleteoption">delete</span>
