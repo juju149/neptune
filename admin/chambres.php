@@ -67,7 +67,7 @@ if (!empty($_GET["chambre_id"]) && !empty($_GET["action"])) {
                 </li>
                 <?php foreach ($list_chambres as $chambre) : ?>
                     <li>
-                        <form action="/chambres.php/?chambre_id=<?= $chambre["id"] ?>&action=modify" method="post" required>
+                        <form action="/admin/chambres.php/?chambre_id=<?= $chambre["id"] ?>&action=modify" method="post" required>
                             <input type="number" value="<?= $chambre["capacite"] ?>" name="capacite" min="0" required>
                             <input type="text" value="<?= $chambre["exposition"] ?>" name="exposition" required>
                             <input type="number" value="<?= $chambre["douche"] ?>" name="douche" min="0" required>
