@@ -25,22 +25,22 @@
                     die();
                 } else
                 { 
-                    header('Location: form_connexion.php?login_err=password'); 
+                    header('Location: index.php?login_err=password'); 
                     die(); 
                 }
             } else
             { 
-                header('Location: form_connexion.php?login_err=email'); 
+                header('Location: index.php?login_err=email'); 
                 die(); 
             }
         } else
         { 
-            header('Location: form_connexion.php?login_err=already'); 
+            header('Location: index.php?login_err=already'); 
             die(); 
         }
     } else
     { 
-        header('Location: form_connexion.php'); 
+        header('Location: index.php'); 
         die();
     }
     

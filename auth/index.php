@@ -52,6 +52,7 @@ session_start();
       <input type="email" name="email" required="required" placeholder="Email">
       <input type="password" name="password" required="required" placeholder="Mot de passe" autocomplete="off">
       <button type="submit" class="buttonSubmit">Connexion</button>
+      <div style="font-size: 10px;text-align:center">Tu n'as pas de compte ? <a href="./inscription.php" class="link">Inscription</a></div>
    </form>
 </body>
 </html>

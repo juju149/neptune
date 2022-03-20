@@ -40,7 +40,7 @@ if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) 
                         'codePostal' => $postal_code,
                         'pays_id' => $pays_id
                     ));
-                    header('Location: form_connexion.php');
+                    header('Location: index.php');
                     die();
                 }else{ header('Location: inscription.php?reg_err=password'); die();}
         }else{ die();}

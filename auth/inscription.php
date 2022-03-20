@@ -3,7 +3,7 @@ require_once '../functions.php';
 session_start();
 if(isset($_SESSION['user']))
 {
-   header('Location:form_connexion.php');
+   header('Location:index.php');
    die();
 }
 $pays = getPays($bdd);
@@ -74,7 +74,8 @@ $pays = getPays($bdd);
             <input style="margin: 0 10px;width: 100px;" type="text" name="ville" placeholder="Ville" required autocomplete="off">
             <input style="width: 70px;" type="text" name="code_postal" placeholder="Code postal" required autocomplete="off">
          </div>
-         <button type="submit" class="buttonSubmit">Inscription</button>  
+         <button type="submit" class="buttonSubmit">Inscription</button>
+         <div style="font-size: 10px;text-align:center">Tu as déjà un compte ? <a href="./index.php" class="link">Conexion</a></div>  
       </form>  
       
 </body>
