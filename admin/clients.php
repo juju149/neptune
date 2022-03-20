@@ -1,9 +1,24 @@
 <?php
-require "./functions.php";
-$error = modifyClient($bdd);
-deleteClient($bdd);
-$list_pays = getCountry($bdd);
-$list_client = getClient($bdd);
+require_once "./functions/functions.php";
+require_once "./functions/function_client.php";
+$list_pays = getPays($bdd);
+$list_client = getClients($bdd);
+
+if (!empty($_GET["client_id"]) && !empty($_GET["action"])) {
+    $client = new Client($_GET["client_id"]);
+    $action = $_GET["action"];
+    $verif = verifParam(["civilite", "nom", "prenom", "email", "adresse", "codePostal", "ville", "pays"]);
+    if ($action == "modify" && $verif) {
+        $client->modify();
+    } elseif ($action == "delete") {
+        $client->delete();
+    } elseif ($action == "add" && $verif) {
+        $client->add();
+    }
+}
+
+
+
 ?>
 
 <!DOCTYPE html>

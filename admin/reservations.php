@@ -1,9 +1,25 @@
 <?php
-require 'functions.php';
-$reservation = getReservation($bdd);
-modifyPlaning($bdd);
-deletePlanning($bdd);
+require_once "./functions/functions.php";
+require_once "./functions/function_client.php";
+if (!empty($_GET["client_id"])) {
+    $client = new Client($_GET["client_id"]);
+    $reservation = $client->reservation();
+    $list_chambres = getChambres($bdd);
+    if (!empty($_GET["action"])) {
+        $verifPost = verifParam(post_list: ["chambre_id", "jour", "acompte", "paye"]);
+        $verifGet = verifParam(get_list: ["chambre_id", "jour"]);
+        $action = $_GET["action"];
+        if ($action == "add" && $verifPost) {
+            $err = $client->addReservation();
+        } elseif ($action == "delete" && $verifGet) {
+            $client->deleteReservation();
+        } elseif ($action == "modify" && $verifGet) {
+            $client->modifyPlaning();
+        }
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +42,7 @@ deletePlanning($bdd);
     <div onclick="closesidebar()" class="content">
         <h1 class="title">Les réservations</h1>
         <div class="clientpannel" style="max-width: 1000px;">
-            <?php if (!$reservation || empty($reservation)) : ?>
+            <?php if (empty($reservation) || !$reservation) : ?>
                 Il n y a pas de reservation
             <?php else : ?>
                 <div class="categoryline">

@@ -1,12 +1,29 @@
 function deleteConfirm(id) {
   if (confirm("Voulez vous vraiment supprimer ?")) {
-    window.location.replace("/?id=" + id + "&action=delete");
+    window.location.replace("/?client_id=" + id + "&action=delete");
   }
+}
+
+function deleteChambre(id) {
+  if (confirm("Voulez vous vraiment supprimer ?")) {
+    window.location.replace("/chambres.php/?chambre_id=" + id + "&action=delete");
+  }
+}
+
+function reservation(id) {
+  window.open("/reservation.php/?client_id=" + id, "_blank");
 }
 
 function deletePlanning(client_id, chambre_id, jour) {
   if (confirm("Voulez vous vraiment supprimer ?")) {
-    window.location.replace("/client.php/?client_id="+client_id+"&action=delete&chambre_id="+chambre_id+"&jour="+jour);
+    window.location.replace(
+      "/reservation.php/?client_id=" +
+        client_id +
+        "&action=delete&chambre_id=" +
+        chambre_id +
+        "&jour=" +
+        jour
+    );
   }
 }
 
