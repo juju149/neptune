@@ -58,6 +58,11 @@
     margin: 0 20px;
 }
 
+.addclientbtn:hover{
+    background: var(--secondary-color);
+    transition: 0.5s;
+}
+
 .deleteButton{
     background: red;
     color: var(--background-color);
@@ -67,6 +72,11 @@
     cursor: pointer;
     font-weight: bold;
     margin: 0 20px;
+}
+
+.deleteButton:hover{
+    background: rgb(202, 0, 0);
+    transition: 0.5s;
 }
 
 input{
@@ -118,6 +128,11 @@ li form{
     font-family: 'Poppins';
     cursor: pointer;
     font-weight: bold;
+}
+
+.saveBtn:hover{
+    background: rgb(0, 128, 0);
+    transition: 0.5s;
 }
 
 select{
